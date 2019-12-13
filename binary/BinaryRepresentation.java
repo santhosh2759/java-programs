@@ -1,6 +1,6 @@
 package binary;
 
-public class binary {
+public class BinaryRepresentation {
 
 	public static void main(String[] args) {
 		int i = 5;
