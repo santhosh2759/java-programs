@@ -5,7 +5,7 @@ public class EqualsOverride {
 	public static void main(String[] args) {
 		Manager m = new Manager(10, "santhosh");
 		Employee e = new Employee(10, "santhosh");
-		System.out.println(e.equals(m));
+		System.out.println(e.equals(m));//false
 	}
 
 }
