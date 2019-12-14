@@ -1,9 +1,11 @@
 package com.cognizant;
 
-public class EqualsTest {
+public class EqualsOverride {
 
 	public static void main(String[] args) {
-		
+		Manager m = new Manager(10, "santhosh");
+		Employee e = new Employee(10, "santhosh");
+		System.out.println(e.equals(m));
 	}
 
 }
@@ -11,6 +13,10 @@ public class EqualsTest {
 class Employee{
 	int id;
 	String name;
+	public Employee(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -42,5 +48,14 @@ class Employee{
 }
 
 class Manager extends Employee{
+
+	public Manager(int id, String name) {
+		super(id, name);
+	}
+
+	@Override
+	public String toString() {
+		return "Manager [id=" + id + ", name=" + name + "]";
+	}
 	
 }
