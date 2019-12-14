@@ -1,7 +1,5 @@
 package com.practice;
 
-import java.util.Arrays;
-
 public class MatchingPairsTest {
 
 	public static void main(String[] args) {
@@ -32,17 +30,6 @@ public class MatchingPairsTest {
 				}	
 			}
 		}
-	}
-	
-	private static void quicksort(int[]a) {
-		quicksort(a,0,a.length-1);
-	}
-
-	private static void quicksort(int[] a, int l, int r) {
-		if(l>=r) {
-			return;
-		}
-		
 	}
 
 }

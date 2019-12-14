@@ -19,7 +19,7 @@ public class BubbleSort {
 
 	public static void sortArray(int[] a) {
 		int len = a.length;
-		for (int i = 0; i < len - 1; i++) {
+		for (int i = 0; i < len; i++) {
 			boolean swapped = false;
 			for (int j = 0; j < len - i - 1; j++) {
 				if(a[j] > a[j+1]) {

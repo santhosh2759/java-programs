@@ -6,8 +6,8 @@ import java.lang.reflect.InvocationTargetException;
 public class SingletonTest {
 
 	public static void main(String[] args) {
-		Constructor[] constructors = Singleton.class.getDeclaredConstructors();
-		for(Constructor con:constructors) {
+		Constructor<?>[] constructors = Singleton.class.getDeclaredConstructors();
+		for(Constructor<?> con:constructors) {
 			con.setAccessible(true);
 			try {
 				Singleton instance1 = (Singleton) con.newInstance();
@@ -34,4 +34,8 @@ class Singleton{
 	public static Singleton getInstance() {
 		return Helper.instance;
 	}
+}
+
+enum SingletonEnum {
+	
 }
