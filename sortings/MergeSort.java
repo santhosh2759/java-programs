@@ -22,8 +22,39 @@ public class MergeSort {
 			int m = (l + r) / 2;
 			mergeSort(a, l, m);
 			mergeSort(a, m + 1, r);
+			mergeWithSystemArrayCopy(a, l, m, r);
 			merge(a, l, m, r);
 		}
+	}
+	
+	private static void mergeWithSystemArrayCopy(int[] a, int l, int m, int r) {
+		//temp array size
+		int len1 = m - l + 1;
+		int len2 = r - m;
+		//temp arrays
+		int[] L = new int[len1];
+		int[] R = new int[len2];
+		
+		//copy values to temp arrays
+		System.arraycopy(a, l, L, 0, len1);
+		System.arraycopy(a, m+1, R, 0, len2);
+		
+		//copy values to the original array
+		int i = 0, j = 0, k = l;
+		while (i < len1 && j < len2) {
+			if (L[i] < R[j]) {
+				a[k] = L[i];
+				i++;
+			} else {
+				a[k] = R[j];
+				j++;
+			}
+			k++;
+		}
+		
+		//copy remaining values to the original array
+		System.arraycopy(L, i, a, k, len1-i);
+		System.arraycopy(R, j, a, k, len2-j);
 	}
 
 	private static void merge(int[] a, int l, int m, int r) {
@@ -33,15 +64,15 @@ public class MergeSort {
 		//temp arrays
 		int[] L = new int[len1];
 		int[] R = new int[len2];
-		int i = 0, j = 0, k = l;
+		
 		//copy values to temp arrays
-		for (i = 0; i < len1; i++)
+		for (int i = 0; i < len1; i++)
 			L[i] = a[l + i];
-		for (j = 0; j < len2; j++)
+		for (int j = 0; j < len2; j++)
 			R[j] = a[m + 1 + j];
-		i = 0;
-		j = 0;
+		
 		//copy values to the original array
+		int i = 0, j = 0, k = l;
 		while (i < len1 && j < len2) {
 			if (L[i] < R[j]) {
 				a[k] = L[i];
