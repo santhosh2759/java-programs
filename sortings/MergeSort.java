@@ -34,7 +34,7 @@ public class MergeSort {
 		int[] L = new int[len1];
 		int[] R = new int[len2];
 		int i = 0, j = 0, k = l;
-		//copy values temp arrays
+		//copy values to temp arrays
 		for (i = 0; i < len1; i++)
 			L[i] = a[l + i];
 		for (j = 0; j < len2; j++)
@@ -52,7 +52,7 @@ public class MergeSort {
 			}
 			k++;
 		}
-		//copy remining values to the original array
+		//copy remaining values to the original array
 		while (i < len1) {
 			a[k] = L[i];
 			i++;
