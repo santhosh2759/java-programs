@@ -4,8 +4,39 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 		int[] a = {6,4,8,2};
-		mergeSort(a);
+		//mergeSort(a);
+		mergeSortwithSystemArrayCopy(a);
 		print(a);
+	}
+
+	private static void mergeSortwithSystemArrayCopy(int[] a) {
+		if (a.length <= 1)
+			return;
+		int[] L = new int[a.length / 2];
+		int[] R = new int[a.length - L.length];
+
+		// copy values to temp arrays
+		System.arraycopy(a, 0, L, 0, L.length);
+		System.arraycopy(a, L.length, R, 0, R.length);
+		mergeSortwithSystemArrayCopy(L);
+		mergeSortwithSystemArrayCopy(R);
+		mergeWithSystemArrayCopy(a, L, R);
+	}
+
+	private static void mergeWithSystemArrayCopy(int[] a, int[] l, int[] r) {
+		int i = 0, j = 0, k = 0;
+		while(i<l.length&&j<r.length) {
+			if(l[i] < r[j]) {
+				a[k] = l[i];
+				i++;
+			}else {
+				a[k] = r[j];
+				j++;
+			}
+			k++;
+		}
+		System.arraycopy(l, i, a, k, l.length-i);
+		System.arraycopy(r, j, a, k, r.length-j);
 	}
 
 	private static void print(int[] a) {
