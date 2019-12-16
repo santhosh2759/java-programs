@@ -4,12 +4,12 @@ public class MergeSort {
 
 	public static void main(String[] args) {
 		int[] a = {6,4,8,2};
-		//mergeSort(a);
-		mergeSortwithSystemArrayCopy(a);
+		sortwithSystemArrayCopy(a);
+		//sort(a);
 		print(a);
 	}
 
-	private static void mergeSortwithSystemArrayCopy(int[] arr) {
+	private static void sortwithSystemArrayCopy(int[] arr) {
 		if (arr.length <= 1)
 			return;
 
@@ -22,8 +22,8 @@ public class MergeSort {
 		System.arraycopy(arr, left.length, right, 0, right.length);
 
 		// sort each half recursively
-		mergeSortwithSystemArrayCopy(left);
-		mergeSortwithSystemArrayCopy(right);
+		sortwithSystemArrayCopy(left);
+		sortwithSystemArrayCopy(right);
 
 		// merge both halves, overwriting the original array
 		mergeWithSystemArrayCopy(arr, left, right);
@@ -54,7 +54,7 @@ public class MergeSort {
 			System.out.print(a[i] + " ");
 	}
 
-	public static void mergeSort(int[] a) {
+	public static void sort(int[] a) {
 		mergeSort(a,0,a.length-1);
 	}
 
