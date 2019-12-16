@@ -9,34 +9,44 @@ public class MergeSort {
 		print(a);
 	}
 
-	private static void mergeSortwithSystemArrayCopy(int[] a) {
-		if (a.length <= 1)
+	private static void mergeSortwithSystemArrayCopy(int[] arr) {
+		if (arr.length <= 1)
 			return;
-		int[] L = new int[a.length / 2];
-		int[] R = new int[a.length - L.length];
 
-		// copy values to temp arrays
-		System.arraycopy(a, 0, L, 0, L.length);
-		System.arraycopy(a, L.length, R, 0, R.length);
-		mergeSortwithSystemArrayCopy(L);
-		mergeSortwithSystemArrayCopy(R);
-		mergeWithSystemArrayCopy(a, L, R);
+		// split the array to two halves
+		int[] left = new int[arr.length / 2];
+		int[] right = new int[arr.length - left.length];
+
+		// copy values to the two halves
+		System.arraycopy(arr, 0, left, 0, left.length);
+		System.arraycopy(arr, left.length, right, 0, right.length);
+
+		// sort each half recursively
+		mergeSortwithSystemArrayCopy(left);
+		mergeSortwithSystemArrayCopy(right);
+
+		// merge both halves, overwriting the original array
+		mergeWithSystemArrayCopy(arr, left, right);
 	}
 
-	private static void mergeWithSystemArrayCopy(int[] a, int[] l, int[] r) {
+	private static void mergeWithSystemArrayCopy(int[] arr, int[] left, int[] right) {
 		int i = 0, j = 0, k = 0;
-		while(i<l.length&&j<r.length) {
-			if(l[i] < r[j]) {
-				a[k] = l[i];
+		// compare elements in the both halves
+		// copy the smaller element to the original array
+		while (i < left.length && j < right.length) {
+			if (left[i] < right[j]) {
+				arr[k] = left[i];
 				i++;
-			}else {
-				a[k] = r[j];
+			} else {
+				arr[k] = right[j];
 				j++;
 			}
 			k++;
 		}
-		System.arraycopy(l, i, a, k, l.length-i);
-		System.arraycopy(r, j, a, k, r.length-j);
+
+		// copy remaining elements from both halves
+		System.arraycopy(left, i, arr, k, left.length - i);
+		System.arraycopy(right, j, arr, k, right.length - j);
 	}
 
 	private static void print(int[] a) {
@@ -53,56 +63,27 @@ public class MergeSort {
 			int m = (l + r) / 2;
 			mergeSort(a, l, m);
 			mergeSort(a, m + 1, r);
-			mergeWithSystemArrayCopy(a, l, m, r);
 			merge(a, l, m, r);
 		}
 	}
 	
-	private static void mergeWithSystemArrayCopy(int[] a, int l, int m, int r) {
-		//temp array size
-		int len1 = m - l + 1;
-		int len2 = r - m;
-		//temp arrays
-		int[] L = new int[len1];
-		int[] R = new int[len2];
-		
-		//copy values to temp arrays
-		System.arraycopy(a, l, L, 0, len1);
-		System.arraycopy(a, m+1, R, 0, len2);
-		
-		//copy values to the original array
-		int i = 0, j = 0, k = l;
-		while (i < len1 && j < len2) {
-			if (L[i] < R[j]) {
-				a[k] = L[i];
-				i++;
-			} else {
-				a[k] = R[j];
-				j++;
-			}
-			k++;
-		}
-		
-		//copy remaining values to the original array
-		System.arraycopy(L, i, a, k, len1-i);
-		System.arraycopy(R, j, a, k, len2-j);
-	}
-
 	private static void merge(int[] a, int l, int m, int r) {
-		//temp array size
+		// temp array size
 		int len1 = m - l + 1;
 		int len2 = r - m;
-		//temp arrays
+		
+		// temp arrays
 		int[] L = new int[len1];
 		int[] R = new int[len2];
-		
-		//copy values to temp arrays
+
+		// copy values to temp arrays
 		for (int i = 0; i < len1; i++)
 			L[i] = a[l + i];
 		for (int j = 0; j < len2; j++)
 			R[j] = a[m + 1 + j];
-		
-		//copy values to the original array
+
+		// compare elements in the temp arrays
+		// copy smaller element to the original array
 		int i = 0, j = 0, k = l;
 		while (i < len1 && j < len2) {
 			if (L[i] < R[j]) {
@@ -114,7 +95,7 @@ public class MergeSort {
 			}
 			k++;
 		}
-		//copy remaining values to the original array
+		// copy remaining values to the original array
 		while (i < len1) {
 			a[k] = L[i];
 			i++;
