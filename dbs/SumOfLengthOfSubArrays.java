@@ -14,6 +14,11 @@ public class SumOfLengthOfSubArrays
     {
         int[] a = {2,1,4,9,2,3,8,3,4};
         int k = 4;
+        calSumOfLengthOfSubArrays(a, k);
+    }
+
+    public static int calSumOfLengthOfSubArrays(int[] a, int k) 
+    {
         int ans = 0;
         int sublen = 0;
         boolean isK = false;
@@ -41,5 +46,6 @@ public class SumOfLengthOfSubArrays
             isK = false;
         }
         System.out.println(ans);
+        return ans;
     }
 }
