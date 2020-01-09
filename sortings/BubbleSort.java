@@ -17,17 +17,22 @@ public class BubbleSort {
 		}
 	}
 
-	public static void sortArray(int[] a) {
+	public static void sortArray(int[] a) 
+	{
 		int len = a.length;
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < len; i++) 
+		{
 			boolean swapped = false;
-			for (int j = 0; j < len - i - 1; j++) {
-				if(a[j] > a[j+1]) {
+			for (int j = 0; j < len - i - 1; j++) 
+			{
+				if(a[j] > a[j+1]) 
+				{
 					swap(a,j,j+1);
 					swapped = true;
 				}
 			}
-			//if array is already sorted no need to proceed further
+			//if array is already sorted 
+			//no need to proceed further
 			if(swapped == false) {
 				return;
 			}

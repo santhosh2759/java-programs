@@ -1,4 +1,4 @@
-package com.java8.practice;
+package java8;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;

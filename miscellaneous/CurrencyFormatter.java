@@ -1,4 +1,4 @@
-package com.practice;
+package miscellaneous;
 
 import java.text.NumberFormat;
 

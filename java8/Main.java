@@ -1,4 +1,4 @@
-package com.java8.practice;
+package java8;
 
 import java.util.Arrays;
 import java.util.Collections;

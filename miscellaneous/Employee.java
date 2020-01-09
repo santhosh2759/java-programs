@@ -1,4 +1,4 @@
-package com.practice;
+package miscellaneous;
 
 public class Employee {
 	private int id;

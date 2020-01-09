@@ -1,4 +1,4 @@
-package binary;
+package miscellaneous;
 
 public class BinaryRepresentation {
 
