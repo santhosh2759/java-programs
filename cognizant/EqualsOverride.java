@@ -1,4 +1,4 @@
-package com.cognizant;
+package cognizant;
 
 public class EqualsOverride {
 
