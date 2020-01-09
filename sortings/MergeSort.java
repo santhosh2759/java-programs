@@ -59,8 +59,11 @@ public class MergeSort {
 	}
 
 	private static void mergeSort(int[] a, int l, int r) {
-		if (l < r) {
-			int m = (l + r) / 2;
+		if (l < r) 
+		{
+			//the sum overflows to a negative value
+			//int m = (l + r) / 2;
+			int m = l + ((r -l) / 2);
 			mergeSort(a, l, m);
 			mergeSort(a, m + 1, r);
 			merge(a, l, m, r);
