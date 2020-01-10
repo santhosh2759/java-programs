@@ -15,7 +15,7 @@ public class BinarySearch {
 
     private static int binarySearch(int[] arr, int l, int r, int n) {
         if (l < r) {
-            int m = l + ((r - l) / 2);
+            int m = l + (r - l) / 2;
             if (n == arr[m]) {
                 return m;
             } else if (n < arr[m]) {
