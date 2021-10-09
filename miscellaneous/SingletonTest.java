@@ -26,11 +26,14 @@ public class SingletonTest {
 }
 
 
-class Singleton{
+class Singleton
+{
 	private Singleton() {}
+	
 	private static class Helper{
 		private static final Singleton instance = new Singleton();
 	}
+	
 	public static Singleton getInstance() {
 		return Helper.instance;
 	}
